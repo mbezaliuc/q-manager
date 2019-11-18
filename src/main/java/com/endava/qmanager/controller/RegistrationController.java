@@ -1,8 +1,10 @@
 package com.endava.qmanager.controller;
 
 import com.endava.qmanager.domain.dto.UserDto;
+import com.endava.qmanager.domain.model.User;
 import com.endava.qmanager.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -15,6 +17,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/register")
 @RequiredArgsConstructor
+@Slf4j
 public class RegistrationController {
 
     private final UserRepository userRepository;
@@ -30,7 +33,8 @@ public class RegistrationController {
         if (errors.hasErrors()) {
             return "registration";
         }
-        userRepository.save(form.toUser(passwordEncoder));
+        User save = userRepository.save(form.toUser(passwordEncoder));
+        log.info("{}", save);
         return "redirect:/login";
     }
 }
