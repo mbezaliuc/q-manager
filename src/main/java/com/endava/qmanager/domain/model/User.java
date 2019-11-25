@@ -30,6 +30,10 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    public Role getRole() {
+        return role;
+    }
+
     public User(String username, String password) {
         this(username, password, Role.ROLE_USER);
     }

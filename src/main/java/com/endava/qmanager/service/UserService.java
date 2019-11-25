@@ -28,7 +28,8 @@ public class UserService {
 
     public void init() {
         userRepository.saveAll(Arrays.asList(
-                new User("Denis","$2a$10$Wfmn9mYn.F9qdGta8lsx4.aqjwG8x3Y2k7ArC43.gU9wUjlQHtUyK", User.Role.ROLE_ADMINISTRATOR))
+                new User("Denis","$2a$10$Wfmn9mYn.F9qdGta8lsx4.aqjwG8x3Y2k7ArC43.gU9wUjlQHtUyK", User.Role.ROLE_ADMINISTRATOR),
+                new User("Dima","$2a$10$Wfmn9mYn.F9qdGta8lsx4.aqjwG8x3Y2k7ArC43.gU9wUjlQHtUyK", User.Role.ROLE_USER))
         );
     }
 
