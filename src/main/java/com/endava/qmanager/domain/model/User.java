@@ -7,6 +7,9 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
+import java.lang.reflect.Array;
+import java.util.List;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @Data
@@ -30,9 +33,13 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    public Role getRole() {
-        return role;
-    }
+    @ManyToMany(cascade=CascadeType.MERGE)
+    @JoinTable(
+            name="user_privileges",
+            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
+            inverseJoinColumns={@JoinColumn(name="PRIVILEGE_ID", referencedColumnName="ID")})
+    private List<Privileges> privileges;
+
 
     public User(String username, String password) {
         this(username, password, Role.ROLE_USER);
@@ -44,13 +51,4 @@ public class User {
         this.role = role;
     }
 
-    public static enum Role implements GrantedAuthority {
-
-        ROLE_ADMINISTRATOR, ROLE_USER;
-
-        @Override
-        public String getAuthority() {
-            return this.name();
-        }
-    }
 }

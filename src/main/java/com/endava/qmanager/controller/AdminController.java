@@ -1,11 +1,10 @@
 package com.endava.qmanager.controller;
 
+import com.endava.qmanager.domain.model.Privileges;
 import com.endava.qmanager.domain.model.User;
 import com.endava.qmanager.repository.UserRepository;
 import com.endava.qmanager.service.UserService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +17,6 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
-//@RequiredArgsConstructor
 @Slf4j
 
 public class AdminController {
@@ -29,7 +27,6 @@ public class AdminController {
     public AdminController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
-        userService.init();
     }
 
     @GetMapping

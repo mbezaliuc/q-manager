@@ -22,14 +22,16 @@
             <th scope="col">User_Id</th>
             <th scope="col">Name</th>
             <th scope="col">Role</th>
+            <th scope="col">Privilege</th>
         </tr>
         </thead>
         <tbody>
         <th:block th:each="user : ${admin}">
         <tr>
-            <th scope="row" th:text="${user.getId()}"></th>
+            <th scope="row" th:text="${user.id}"></th>
             <td th:text="${user.username}"></td>
             <td th:text="${user.role}"></td>
+            <td th:text="${user.getPrivileges()}"></td>
             <td><a th:href="@{/admin/edit/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
         </tr>
         </th:block>

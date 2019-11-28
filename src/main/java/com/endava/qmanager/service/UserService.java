@@ -22,15 +22,4 @@ public class UserService {
     public Iterable<User> getUser(){
         return userRepository.findAll();
     }
-
-
-
-
-    public void init() {
-        userRepository.saveAll(Arrays.asList(
-                new User("Denis","$2a$10$Wfmn9mYn.F9qdGta8lsx4.aqjwG8x3Y2k7ArC43.gU9wUjlQHtUyK", User.Role.ROLE_ADMINISTRATOR),
-                new User("Dima","$2a$10$Wfmn9mYn.F9qdGta8lsx4.aqjwG8x3Y2k7ArC43.gU9wUjlQHtUyK", User.Role.ROLE_USER))
-        );
-    }
-
 }
