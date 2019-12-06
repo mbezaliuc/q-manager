@@ -31,7 +31,7 @@
             <th scope="row" th:text="${user.id}"></th>
             <td th:text="${user.username}"></td>
             <td th:text="${user.role}"></td>
-            <td th:text="${user.getPrivileges()}"></td>
+            <td th:text="${user.privileges}"></td>
             <td><a th:href="@{/admin/edit/{id}(id=${user.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
         </tr>
         </th:block>

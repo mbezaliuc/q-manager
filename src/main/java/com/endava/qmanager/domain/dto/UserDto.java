@@ -23,7 +23,6 @@ public class UserDto {
     private String confirm;
 
 
-
     public User toUser(PasswordEncoder passwordEncoder) {
         if (!confirm.equals(password)) {
             throw new IllegalArgumentException("Passwords must match");

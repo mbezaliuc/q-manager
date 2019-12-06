@@ -3,10 +3,12 @@ package com.endava.qmanager.domain.model;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="privileges")
+@Table(name = "privileges")
 
 public class Privileges {
 
@@ -44,7 +46,8 @@ public class Privileges {
         this.users = users;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }

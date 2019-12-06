@@ -8,7 +8,11 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 
 import java.lang.reflect.Array;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -33,6 +37,8 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+
+
     @ManyToMany(cascade=CascadeType.MERGE)
     @JoinTable(
             name="user_privileges",
@@ -41,7 +47,8 @@ public class User {
     private List<Privileges> privileges;
 
 
-    public User(String username, String password) {
+
+public User(String username, String password) {
         this(username, password, Role.ROLE_USER);
     }
 
@@ -49,6 +56,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.role = role;
+
     }
 
 }

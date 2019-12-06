@@ -36,8 +36,8 @@ public class HomeController {
     @RequestMapping(value = "/redirectPage", method = {RequestMethod.GET, RequestMethod.POST})
     public String redirectPage(Model model){
         if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(ROLE_ADMINISTRATOR)){
-            model.addAttribute("admin", userRepository.findAll());
-            return "admin";
+
+            return "redirect:/admin";
         }else{
             return "home";
         }
