@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
     <title>Q-manager Login</title>
 </head>
 <body>
+
 <h1>Login</h1>
 <div th:if="${error}">
     Unable to login. Check your username and password.
 </div>
-<p>New here? Click
-    <a th:href="@{/register}">here</a> to register.</p>
-<!-- tag::thAction[] -->
-<form method="POST" th:action="@{/login}" id="loginForm">
-    <!-- end::thAction[] -->
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-    <label for="username">Username: </label>
-    <input type="text" name="username" id="username" /><br/>
-    <input type="password" name="password" id="password" /><br/>
-    <input type="submit" value="Login"/>
-</form>
+<div class="login-page">
+    <div class="form">
+        <form  method="POST" th:action="@{/register}" id="registerForm" class="register-form">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <input type="text" name="username" placeholder="name"/>
+            <input type="password" name="password" placeholder="password"/>
+            <input type="password" name="confirm" placeholder="password"/>
+            <button th:type="submit" th:value="Register">Register</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form method="POST" th:action="@{/login}" id="loginForm" class="login-form">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <input type="text" name="username"  placeholder="name"/>
+            <input type="password" name="password"  placeholder="password"/>
+            <button th:type="submit" th:value="Login">Log In</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
+    </div>
+</div>
+    <script type="text/javascript" th:src="@{/js/2.1.3.jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/animateLoginRegisterForm.js}"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
     <title>Q-manager registration</title>
 </head>
 <body>
@@ -9,15 +10,20 @@
 <div th:if="${error}">
     Unable to register. Try again
 </div>
-<form method="POST" th:action="@{/register}" id="registerForm">
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-    <label for="username">Username: </label>
-    <input type="text" name="username"/><br/>
-    <label for="password">Password: </label>
-    <input type="password" name="password"/><br/>
-    <label for="confirm">Confirm password: </label>
-    <input type="password" name="confirm"/><br/>
-    <input type="submit" value="Register"/>
-</form>
+<div class="login-page">
+    <div class="form">
+        <form method="POST" th:action="@{/register}" id="registerForm">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+            <input type="text" name="username" placeholder="name"/>
+            <input type="password" name="password" placeholder="password"/>
+            <input type="password" name="confirm" placeholder="password"/>
+            <button th:type="submit" th:value="Register">Register</button>
+            <p class="message">Already registered? <a th:href="@{/login}">Click to Log In.</a></p>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/js/2.1.3.jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/animateLoginRegisterForm.js}"></script>
 </body>
 </html>
